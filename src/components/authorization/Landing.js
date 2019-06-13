@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Landing extends Component {
+    constructor() {
+        super();
+        this.state ={
+
+        }
+        this.logOutUser = this.logOutUser.bind(this)
+    }
+
+    logOutUser() {
+        axios
+            .post('/auth/logout').then( res => {
+                console.log(res.data)
+            })
+    }
     render() {
         return (
             <div>
@@ -12,7 +27,7 @@ class Landing extends Component {
                     <button>Create Account</button>
                 </Link>
                 <Link>
-                    <button>Logout</button>
+                    <button onClick={this.logOutUser} >Logout</button>
                 </Link>
             </div>
         )

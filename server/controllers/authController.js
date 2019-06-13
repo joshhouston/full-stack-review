@@ -55,9 +55,9 @@ module.exports = {
     },
 
     logOut: (req, res) => {
-        req.session.destroy(
-            res.status(200).send(req.session)
-        )
+        req.session.destroy()
+        res.status(200).send(req.session)
+        
     }
 
 
